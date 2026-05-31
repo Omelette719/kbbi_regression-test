@@ -6,8 +6,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from config import BASE_URL
 
 
@@ -25,8 +23,8 @@ class BaseTest(unittest.TestCase):
         chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
         chrome_options.add_experimental_option("useAutomationExtension", False)
 
-        service = Service(ChromeDriverManager().install())
-        cls.driver = webdriver.Chrome(service=service, options=chrome_options)
+        # UBAH BAGIAN INI: Langsung panggil webdriver.Chrome tanpa Service bawaan webdriver_manager
+        cls.driver = webdriver.Chrome(options=chrome_options)
         cls.base_url = BASE_URL
         cls.driver.implicitly_wait(5)
 
