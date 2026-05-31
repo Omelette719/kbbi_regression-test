@@ -1,0 +1,8 @@
+# Jangan upload file .env ke GitHub (berisi kredensial)
+.env
+
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.log
